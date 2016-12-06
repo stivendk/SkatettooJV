@@ -21,13 +21,13 @@ public interface EstiloDisenioFacadeLocal {
     void edit(EstiloDisenio estiloDisenio);
 
     void remove(EstiloDisenio estiloDisenio);
-
+    
     EstiloDisenio find(Object id);
 
     List<EstiloDisenio> findAll();
 
     List<EstiloDisenio> findRange(int[] range);
-
+    
     int count();
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.skatettoo.frontend.controllers.module.disenio;
+package com.skatettoo.frontend.disenio.controllers;
 
 import com.skatettoo.backend.persistence.entities.Disenio;
 import com.skatettoo.backend.persistence.entities.EstiloDisenio;
@@ -39,28 +39,18 @@ public class DisenioManagedBean implements Serializable {
     public DisenioManagedBean() {
     }
 
-    public Disenio getDisenio() {
-        return disenio;
+    public Disenio getDisenio(Integer i) {
+        return diseniofc.find(i);
     }
 
     public void setDisenio(Disenio disenio) {
         this.disenio = disenio;
     }
 
-    public List<EstiloDisenio> getLisest() {
-        lisest = estilfc.findAll();
-        return lisest;
-    }
-
     public void setLisest(List<EstiloDisenio> lisest) {
         this.lisest = lisest;
     }
-
-    public List<Usuario> getLisus() {
-        lisus = usuariofc.findAll();
-        return lisus;
-    }
-
+   
     public void setLisus(List<Usuario> lisus) {
         this.lisus = lisus;
     }

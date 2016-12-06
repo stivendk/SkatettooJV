@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Actualizar Estilo</title>
+    </h:head>
+    <h:body>
+        <h:panelGrid columns="2" cellpadding="10">
+            <h:form>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Nombre de estilo:" for="nombreEstilo" />
+                    <p:inputText id="nombreEstilo" value="#{estilosManagedBean.estil.nombreEstilo}" title="NombreEstilo" required="true" requiredMessage="The NombreEstilo field is required."/>
+                    <p:outputLabel value="Descripcion de estilo:" for="descripcionEstilo" />
+                    <p:inputTextarea rows="4" cols="30" id="descripcionEstilo" value="#{estilosManagedBean.estil.descripcionEstilo}" title="DescripcionEstilo" required="true" requiredMessage="The DescripcionEstilo field is required."/>
+                </p:panelGrid>
+                <p:commandButton value="Añadir" actionListener="#{estilosManagedBean.modificarEstilo()}"/>
+            </h:form>
+        </h:panelGrid>
+    </h:body>
+</html>
+

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.skatettoo.frontend.controllers.module.disenio;
+package com.skatettoo.frontend.disenio.controllers;
 
 import com.skatettoo.backend.persistence.entities.EstiloDisenio;
 import com.skatettoo.backend.persistence.facade.EstiloDisenioFacadeLocal;
@@ -13,7 +13,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-
 /**
  *
  * @author SENA
@@ -42,19 +41,28 @@ public class EstilosManagedBean implements Serializable {
         estil = new EstiloDisenio();
     }
     
-    public void registrarDisenio(){
+    public void registrarEstilo(){
         estilfc.create(estil);
     }
     
-    public void modificarDisenio(){
+    public void modificarEstilo(){
         estilfc.edit(estil);
     }
     
-    public void eliminarDisenio(){
+    public void eliminarEstilo(){
         estilfc.remove(estil);
     }
     
-    public List<EstiloDisenio> listarDisenios(){
+    public List<EstiloDisenio> listarEstilo(){
         return estilfc.findAll();
+    }
+    
+    public EstiloDisenio getEstilo(Integer id){
+        return estilfc.find(id);
+    }
+    
+    public String actualizarEstilo(EstiloDisenio d){
+        estil = d;
+        return "/pages/actEstl";
     }
 }

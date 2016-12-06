@@ -39,8 +39,8 @@ public class UsuarioManagedBean implements Serializable {
     public UsuarioManagedBean() {
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getUsuario(Integer id) {
+        return usuariofc.find(id);
     }
 
     public void setUsuario(Usuario usuario) {
@@ -78,12 +78,12 @@ public class UsuarioManagedBean implements Serializable {
         usuariofc.remove(usuario);
     }
 
-    public String modificarUsuario() {
+    public void modificarUsuario() {
         usuariofc.edit(usuario);
-        return "";
     }
 
     public List<Usuario> listarUsuario() {
         return usuariofc.findAll();
     }
+    
 }
