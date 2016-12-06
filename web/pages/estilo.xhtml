@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Estilos</title>
+    </h:head>
+    <h:body>
+        <h:form>           
+            <p:growl showDetail="true" />
+            <h3 style="margin-top:0">Diseño</h3>
+            <p:accordionPanel>
+                <p:tab title="Añadir nuevo estilo" >
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <h:form id="for">
+                            <p:panelGrid columns="2" >
+                                <p:outputLabel value="Nombre de estilo:" for="nombreEstilo" />
+                                <p:inputText id="nombreEstilo" value="#{estilosManagedBean.estil.nombreEstilo}" title="NombreEstilo" required="true" requiredMessage="The NombreEstilo field is required."/>
+                                <p:outputLabel value="Descripcion de estilo:" for="descripcionEstilo" />
+                                <p:inputTextarea rows="4" cols="30" id="descripcionEstilo" value="#{estilosManagedBean.estil.descripcionEstilo}" title="DescripcionEstilo" required="true" requiredMessage="The DescripcionEstilo field is required."/>
+                            </p:panelGrid>
+                            <p:commandButton value="Añadir" actionListener="#{estilosManagedBean.registrarEstilo()}"/>
+                        </h:form>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Listar Estilo">
+                    <f:view>
+                        <h:form>
+                            <p:messages autoUpdate="true"></p:messages>
+            
+                            <h1><h:outputText value="List"/></h1>
+                            <p:dataTable value="#{disenioManagedBean.lisest}" var="item">
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="NombreEstilo"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombreEstilo}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="DescripcionEstilo"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.descripcionEstilo}"/>
+                                </p:column>
+                                <p:column>
+                                    <center><p:commandButton value="Modificar" actionListener="#{estilosManagedBean.actualizarEstilo(d)}"/></center>
+                                </p:column>
+
+                                <p:column>
+                                    <center><p:commandButton value="Eliminar" actionListener="#{estilosManagedBean.eliminarEstilo()}"/></center>
+                                </p:column>
+
+                            </p:dataTable>
+                        </h:form>
+                    </f:view>
+
+                </p:tab>
+            </p:accordionPanel>
+        </h:form>
+    </h:body>
+</html>
+
