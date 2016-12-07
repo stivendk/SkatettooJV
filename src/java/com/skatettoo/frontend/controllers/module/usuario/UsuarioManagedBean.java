@@ -26,48 +26,61 @@ import javax.ejb.EJB;
 @SessionScoped
 public class UsuarioManagedBean implements Serializable {
 
+    private Usuario usuario;
+    private List<Usuario> lisus;
+    private EstadoUsuario estad;
+    private Rol rol;
     @EJB
     private UsuarioFacadeLocal usuariofc;
-    private Usuario usuario;
-    @EJB
     private RolFacadeLocal rolfc;
-    private List<Rol> lisrol;
-    @EJB
     private EstadoUsuarioFacadeLocal estadfc;
-    private List<EstadoUsuario> lisestad;
-
+    
     public UsuarioManagedBean() {
     }
 
-    public Usuario getUsuario(Integer id) {
+    public Usuario getUsuarioKey(Integer id) {
         return usuariofc.find(id);
+    }
+    
+    public Usuario getUsuario(){
+        return usuario;
     }
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    public List<Rol> getLisrol() {
-        lisrol = rolfc.findAll();
-        return lisrol;
+    public List<Usuario> getLisus() {
+        lisus = usuariofc.findAll();
+        return lisus;
     }
 
-    public void setLisrol(List<Rol> lisrol) {
-        this.lisrol = lisrol;
+    public void setLisus(List<Usuario> lisus) {
+        this.lisus = lisus;
     }
 
-    public List<EstadoUsuario> getLisestad() {
-        lisestad = estadfc.findAll();
-        return lisestad;
+    public EstadoUsuario getEstad(Integer id) {
+        return estadfc.find(id);
     }
 
-    public void setLisestad(List<EstadoUsuario> lisestad) {
-        this.lisestad = lisestad;
+    public void setEstad(EstadoUsuario estad) {
+        this.estad = estad;
     }
+
+    public Rol getRol(Integer id) {
+        return rolfc.find(id);
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+    
 
     @PostConstruct
     public void init() {
         usuario = new Usuario();
+        rol = new Rol();
+        estad = new EstadoUsuario();
     }
 
     public void registrarUsuario() {
@@ -80,10 +93,6 @@ public class UsuarioManagedBean implements Serializable {
 
     public void modificarUsuario() {
         usuariofc.edit(usuario);
-    }
+    }    
 
-    public List<Usuario> listarUsuario() {
-        return usuariofc.findAll();
-    }
-    
 }

@@ -24,6 +24,7 @@ public class EstilosManagedBean implements Serializable {
     @EJB
     private EstiloDisenioFacadeLocal estilfc;
     private EstiloDisenio estil;
+    private List<EstiloDisenio> lestil;
 
     public EstilosManagedBean() {
     }
@@ -34,6 +35,14 @@ public class EstilosManagedBean implements Serializable {
 
     public void setEstil(EstiloDisenio estil) {
         this.estil = estil;
+    }
+    public List<EstiloDisenio> getLestil() {
+        lestil = estilfc.findAll();
+        return lestil;
+    }
+
+    public void setLestil(List<EstiloDisenio> lestil) {
+        this.lestil = lestil;
     }
     
     @PostConstruct
@@ -53,10 +62,6 @@ public class EstilosManagedBean implements Serializable {
         estilfc.remove(estil);
     }
     
-    public List<EstiloDisenio> listarEstilo(){
-        return estilfc.findAll();
-    }
-    
     public EstiloDisenio getEstilo(Integer id){
         return estilfc.find(id);
     }
@@ -65,4 +70,5 @@ public class EstilosManagedBean implements Serializable {
         estil = d;
         return "/pages/actEstl";
     }
+
 }

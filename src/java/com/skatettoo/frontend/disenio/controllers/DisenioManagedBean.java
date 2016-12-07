@@ -26,38 +26,60 @@ import javax.ejb.EJB;
 @SessionScoped
 public class DisenioManagedBean implements Serializable {
 
+    private Disenio disenio;
+    private List<Disenio> ldisenio;
+    private EstiloDisenio estad;
+    private Usuario usuario;
     @EJB
     private DisenioFacadeLocal diseniofc;
-    private Disenio disenio;
-    @EJB
     private EstiloDisenioFacadeLocal estilfc;
-    private List<EstiloDisenio> lisest;
-    @EJB
     private UsuarioFacadeLocal usuariofc;
-    private List<Usuario> lisus;
 
     public DisenioManagedBean() {
     }
 
-    public Disenio getDisenio(Integer i) {
-        return diseniofc.find(i);
+    public Disenio getDisenio() {
+        return disenio;
     }
-
+    
+    public Disenio getDisenioKey(Integer id){
+        return diseniofc.find(id);
+    }
+    
     public void setDisenio(Disenio disenio) {
         this.disenio = disenio;
     }
 
-    public void setLisest(List<EstiloDisenio> lisest) {
-        this.lisest = lisest;
+    public List<Disenio> getLdisenio() {
+        ldisenio = diseniofc.findAll();
+        return ldisenio;
     }
-   
-    public void setLisus(List<Usuario> lisus) {
-        this.lisus = lisus;
+
+    public void setLdisenio(List<Disenio> ldisenio) {
+        this.ldisenio = ldisenio;
+    }
+
+    public EstiloDisenio getEstad(Integer id) {
+        return estilfc.find(id);
+    }
+
+    public void setEstad(EstiloDisenio estad) {
+        this.estad = estad;
+    }
+
+    public Usuario getUsuario(Integer id) {
+        return usuariofc.find(id);
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
     @PostConstruct
     public void init(){
         disenio = new Disenio();
+        usuario = new Usuario();
+        estad = new EstiloDisenio();
     }
     
     public void registrarDisenio() {
@@ -76,4 +98,5 @@ public class DisenioManagedBean implements Serializable {
     public List<Disenio> listarDisenio() {
         return diseniofc.findAll();
     }
+
 }

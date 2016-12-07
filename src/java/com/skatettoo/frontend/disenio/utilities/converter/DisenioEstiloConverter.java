@@ -26,7 +26,7 @@ public class DisenioEstiloConverter implements Converter{
         Integer e = Integer.valueOf(value);
         DisenioManagedBean omb = (DisenioManagedBean) context.getApplication().getELResolver().getValue(context.getELContext(), null, "estilosManagedBean");
         
-        return omb.getDisenio(e);
+        return omb.getDisenioKey(e);
     }
 
     @Override
